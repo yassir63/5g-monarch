@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 1,
   "links": [],
   "panels": [
     {
@@ -210,22 +210,6 @@
           "range": true,
           "refId": "H",
           "useBackend": false
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "monarch-thanos"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "(sum(rate(container_cpu_usage_seconds_total{pod=~\"packet-pairer.*\"}[1m]))/sum(machine_cpu_cores))*100",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
-          "legendFormat": "packet-pairer",
-          "range": true,
-          "refId": "I",
-          "useBackend": false
         }
       ],
       "title": "CPU Usage",
@@ -404,38 +388,6 @@
           "legendFormat": "nr_ue3",
           "range": true,
           "refId": "F"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "monarch-thanos"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "(sum(container_memory_usage_bytes{container=\"ebpf-latency-probe\"})/sum(machine_memory_bytes))*100",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
-          "legendFormat": "ebpf-latency-probe",
-          "range": true,
-          "refId": "H",
-          "useBackend": false
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "monarch-thanos"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "(sum(container_memory_usage_bytes{pod=~\"packet-pairer.*\"})/sum(machine_memory_bytes))*100",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
-          "legendFormat": "packet-pairer",
-          "range": true,
-          "refId": "I",
-          "useBackend": false
         }
       ],
       "title": "Memory Usage",
@@ -537,7 +489,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "gtp_teid_latency_ns{imsi=\"001010000000006\",probe_role=~\"gnb|upf\"}/1000000",
+          "expr": "gtp_teid_latency_ns{imsi=\"001010000001121\",probe_role=~\"gnb|upf\"}/1000000",
           "interval": "",
           "legendFormat": "{{mode}},{{probe_role}}",
           "range": true,
@@ -630,7 +582,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "gtp_teid_latency_ns{imsi=\"001010000000007\",probe_role=~\"gnb|upf\"}/1000000",
+          "expr": "gtp_teid_latency_ns{imsi=\"001010000001123\",probe_role=~\"gnb|upf\"}/1000000",
           "interval": "",
           "legendFormat": "{{mode}},{{probe_role}}",
           "range": true,
@@ -723,7 +675,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "gtp_teid_latency_ns{imsi=\"001010000000008\",probe_role=~\"gnb|upf\"}/1000000",
+          "expr": "gtp_teid_latency_ns{imsi=\"001010000001122\",probe_role=~\"gnb|upf\"}/1000000",
           "interval": "",
           "legendFormat": "{{mode}},{{probe_role}}",
           "range": true,
@@ -794,7 +746,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -828,7 +781,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum by (mode, probe_role) (rate(gtp_teid_latency_observed_ns_sum{imsi=\"001010000000006\"}[2s])) / sum by (mode, probe_role) (rate(gtp_teid_latency_observed_ns_count{imsi=\"001010000000006\"}[2s])) / 1000000",
+          "expr": "sum by (mode, probe_role) (rate(gtp_teid_latency_observed_ns_sum{imsi=\"001010000001121\"}[2s])) / sum by (mode, probe_role) (rate(gtp_teid_latency_observed_ns_count{imsi=\"001010000001121\"}[2s])) / 1000000",
           "interval": "",
           "legendFormat": "{{mode}},{{probe_role}}",
           "range": true,
@@ -886,7 +839,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -920,7 +874,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum by (mode, probe_role) (rate(gtp_teid_latency_observed_ns_sum{imsi=\"001010000000007\"}[2s])) / sum by (mode, probe_role) (rate(gtp_teid_latency_observed_ns_count{imsi=\"001010000000007\"}[2s])) / 1000000",
+          "expr": "sum by (mode, probe_role) (rate(gtp_teid_latency_observed_ns_sum{imsi=\"001010000001123\"}[2s])) / sum by (mode, probe_role) (rate(gtp_teid_latency_observed_ns_count{imsi=\"001010000001123\"}[2s])) / 1000000",
           "interval": "",
           "legendFormat": "{{mode}},{{probe_role}}",
           "range": true,
@@ -978,7 +932,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1012,7 +967,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum by (mode, probe_role) (rate(gtp_teid_latency_observed_ns_sum{imsi=\"001010000000008\"}[2s])) / sum by (mode, probe_role) (rate(gtp_teid_latency_observed_ns_count{imsi=\"001010000000008\"}[2s])) / 1000000",
+          "expr": "sum by (mode, probe_role) (rate(gtp_teid_latency_observed_ns_sum{imsi=\"001010000001122\"}[2s])) / sum by (mode, probe_role) (rate(gtp_teid_latency_observed_ns_count{imsi=\"001010000001122\"}[2s])) / 1000000",
           "interval": "",
           "legendFormat": "{{mode}},{{probe_role}}",
           "range": true,
@@ -1083,7 +1038,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red"
+                "color": "red",
+                "value": null
               },
               {
                 "color": "green",
@@ -1117,7 +1073,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum by (mode, probe_role) (rate(gtp_teid_latency_events_total{imsi=\"001010000000006\"}[2s]))",
+          "expr": "sum by (mode, probe_role) (rate(gtp_teid_latency_events_total{imsi=\"001010000001121\"}[2s]))",
           "interval": "",
           "legendFormat": "{{mode}},{{probe_role}}",
           "range": true,
@@ -1175,7 +1131,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red"
+                "color": "red",
+                "value": null
               },
               {
                 "color": "green",
@@ -1209,7 +1166,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum by (mode, probe_role) (rate(gtp_teid_latency_events_total{imsi=\"001010000000007\"}[2s]))",
+          "expr": "sum by (mode, probe_role) (rate(gtp_teid_latency_events_total{imsi=\"001010000001123\"}[2s]))",
           "interval": "",
           "legendFormat": "{{mode}},{{probe_role}}",
           "range": true,
@@ -1267,7 +1224,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red"
+                "color": "red",
+                "value": null
               },
               {
                 "color": "green",
@@ -1301,7 +1259,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum by (mode, probe_role) (rate(gtp_teid_latency_events_total{imsi=\"001010000000008\"}[2s]))",
+          "expr": "sum by (mode, probe_role) (rate(gtp_teid_latency_events_total{imsi=\"001010000001122\"}[2s]))",
           "interval": "",
           "legendFormat": "{{mode}},{{probe_role}}",
           "range": true,
@@ -1372,7 +1330,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1469,7 +1428,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1566,7 +1526,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1663,7 +1624,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1773,7 +1735,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1870,7 +1833,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1966,7 +1930,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2058,7 +2023,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2145,20 +2111,21 @@
               "mode": "off"
             }
           },
-          "decimals": 0,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          }
+          },
+          "decimals": 0
         },
         "overrides": []
       },
@@ -2171,12 +2138,12 @@
       "id": 1,
       "options": {
         "legend": {
+          "sortBy": "Name",
+          "sortDesc": true,
           "calcs": [],
           "displayMode": "table",
           "placement": "right",
-          "showLegend": true,
-          "sortBy": "Name",
-          "sortDesc": true
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2264,20 +2231,21 @@
               "mode": "off"
             }
           },
-          "decimals": 0,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          }
+          },
+          "decimals": 0
         },
         "overrides": []
       },
@@ -2290,12 +2258,12 @@
       "id": 20,
       "options": {
         "legend": {
+          "sortBy": "Name",
+          "sortDesc": false,
           "calcs": [],
           "displayMode": "table",
           "placement": "right",
-          "showLegend": true,
-          "sortBy": "Name",
-          "sortDesc": false
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2384,7 +2352,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2479,7 +2448,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2533,6 +2503,205 @@
       "type": "timeseries"
     },
     {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 96
+      },
+      "id": 135,
+      "panels": [],
+      "title": "Packet Drops / Errors",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "monarch-thanos"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "errors/s",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 4,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "ops"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 97
+      },
+      "id": 136,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "rate(oai_gnb_mac_dlsch_errors[30s])",
+          "legendFormat": "ue_rnti={{rnti}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Downlink MAC Error Rate per RNTI",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "monarch-thanos"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "errors/s",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 4,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "ops"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 97
+      },
+      "id": 137,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "rate(oai_gnb_mac_ulsch_errors[30s])",
+          "legendFormat": "ue_rnti={{rnti}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Uplink MAC Error Rate per RNTI",
+      "type": "timeseries"
+    },
+    {
       "datasource": {
         "type": "prometheus",
         "uid": "monarch-thanos"
@@ -2580,7 +2749,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2596,7 +2766,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 96
+        "y": 105
       },
       "id": 13,
       "options": {
@@ -2676,7 +2846,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2692,7 +2863,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 96
+        "y": 105
       },
       "id": 34,
       "options": {
@@ -2777,7 +2948,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2792,7 +2964,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 104
+        "y": 113
       },
       "id": 16,
       "options": {
@@ -2872,7 +3044,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2887,7 +3060,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 104
+        "y": 113
       },
       "id": 35,
       "options": {
@@ -2929,7 +3102,6 @@
         "type": "prometheus",
         "uid": "monarch-thanos"
       },
-      "description": "PRACH I0 (dB) represents the estimated interference and noise power level on the Physical Random Access Channel (PRACH) as measured by the gNB. It reflects the background energy in the PRACH resources, impacting the gNB's ability to detect random access preambles from UEs. A lower I0 value indicates a cleaner channel with less interference, improving the chances of successful UE access attempts, while a higher I0 suggests a noisy or congested environment that may hinder initial access. Monitoring this metric helps assess PRACH quality and network accessibility under varying load and interference conditions.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2973,7 +3145,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2989,7 +3162,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 112
+        "y": 121
       },
       "id": 25,
       "options": {
@@ -3019,7 +3192,8 @@
         }
       ],
       "title": "PRACH I0",
-      "type": "timeseries"
+      "type": "timeseries",
+      "description": "PRACH I0 (dB) represents the estimated interference and noise power level on the Physical Random Access Channel (PRACH) as measured by the gNB. It reflects the background energy in the PRACH resources, impacting the gNB's ability to detect random access preambles from UEs. A lower I0 value indicates a cleaner channel with less interference, improving the chances of successful UE access attempts, while a higher I0 suggests a noisy or congested environment that may hinder initial access. Monitoring this metric helps assess PRACH quality and network accessibility under varying load and interference conditions."
     },
     {
       "datasource": {
@@ -3052,7 +3226,7 @@
         "h": 7,
         "w": 9,
         "x": 12,
-        "y": 112
+        "y": 121
       },
       "id": 24,
       "options": {
@@ -3119,7 +3293,7 @@
         "h": 7,
         "w": 3,
         "x": 21,
-        "y": 112
+        "y": 121
       },
       "id": 23,
       "options": {
@@ -3204,7 +3378,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3220,7 +3395,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 119
+        "y": 128
       },
       "id": 18,
       "options": {
@@ -3348,7 +3523,7 @@
         "h": 31,
         "w": 12,
         "x": 12,
-        "y": 119
+        "y": 128
       },
       "id": 32,
       "options": {
@@ -3432,7 +3607,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3448,7 +3624,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 127
+        "y": 136
       },
       "id": 29,
       "options": {
@@ -3524,7 +3700,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3540,7 +3717,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 135
+        "y": 144
       },
       "id": 30,
       "options": {
@@ -3616,7 +3793,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3632,7 +3810,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 143
+        "y": 152
       },
       "id": 31,
       "options": {
@@ -3671,7 +3849,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 150
+        "y": 159
       },
       "id": 101,
       "panels": [],
@@ -3726,7 +3904,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3742,7 +3921,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 151
+        "y": 160
       },
       "id": 102,
       "options": {
@@ -3818,7 +3997,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3834,7 +4014,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 151
+        "y": 160
       },
       "id": 103,
       "options": {
@@ -3910,7 +4090,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3926,7 +4107,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 159
+        "y": 168
       },
       "id": 104,
       "options": {
@@ -4002,7 +4183,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4018,7 +4200,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 159
+        "y": 168
       },
       "id": 105,
       "options": {
@@ -4094,7 +4276,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4110,7 +4293,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 167
+        "y": 176
       },
       "id": 106,
       "options": {
@@ -4186,7 +4369,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4202,7 +4386,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 167
+        "y": 176
       },
       "id": 107,
       "options": {
@@ -4278,7 +4462,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4294,7 +4479,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 175
+        "y": 184
       },
       "id": 108,
       "options": {
@@ -4370,7 +4555,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4386,7 +4572,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 175
+        "y": 184
       },
       "id": 109,
       "options": {
@@ -4462,7 +4648,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4478,7 +4665,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 183
+        "y": 192
       },
       "id": 127,
       "options": {
@@ -4554,7 +4741,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4570,7 +4758,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 183
+        "y": 192
       },
       "id": 128,
       "options": {
@@ -4646,7 +4834,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4662,7 +4851,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 191
+        "y": 200
       },
       "id": 129,
       "options": {
@@ -4738,7 +4927,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4754,7 +4944,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 191
+        "y": 200
       },
       "id": 130,
       "options": {
@@ -4830,7 +5020,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4846,7 +5037,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 199
+        "y": 208
       },
       "id": 131,
       "options": {
@@ -4922,7 +5113,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4938,7 +5130,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 199
+        "y": 208
       },
       "id": 132,
       "options": {
@@ -5014,7 +5206,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5030,7 +5223,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 207
+        "y": 216
       },
       "id": 133,
       "options": {
@@ -5106,7 +5299,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5122,7 +5316,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 207
+        "y": 216
       },
       "id": 134,
       "options": {
@@ -5156,7 +5350,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 215
+        "y": 224
       },
       "id": 110,
       "panels": [],
@@ -5211,7 +5405,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5227,7 +5422,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 216
+        "y": 225
       },
       "id": 111,
       "options": {
@@ -5303,7 +5498,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5319,7 +5515,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 216
+        "y": 225
       },
       "id": 112,
       "options": {
@@ -5395,7 +5591,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5411,7 +5608,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 224
+        "y": 233
       },
       "id": 113,
       "options": {
@@ -5487,7 +5684,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5503,7 +5701,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 224
+        "y": 233
       },
       "id": 114,
       "options": {
@@ -5579,7 +5777,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5595,7 +5794,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 232
+        "y": 241
       },
       "id": 115,
       "options": {
@@ -5671,7 +5870,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5687,7 +5887,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 232
+        "y": 241
       },
       "id": 116,
       "options": {
@@ -5763,7 +5963,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5779,7 +5980,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 240
+        "y": 249
       },
       "id": 117,
       "options": {
@@ -5855,7 +6056,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5871,7 +6073,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 240
+        "y": 249
       },
       "id": 118,
       "options": {
@@ -5898,6 +6100,298 @@
       ],
       "title": "Same-Packet Rejection Rate",
       "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 257
+      },
+      "id": 138,
+      "panels": [],
+      "title": "Latency (Median 1s)",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "monarch-thanos"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 258
+      },
+      "id": 139,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "gtp_teid_latency_median_1s_ns{imsi=\"001010000001121\"} / 1000000",
+          "interval": "",
+          "legendFormat": "{{mode}},{{probe_role}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "UE1 Latency (Median 1s)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "monarch-thanos"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 258
+      },
+      "id": 140,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "gtp_teid_latency_median_1s_ns{imsi=\"001010000001123\"} / 1000000",
+          "interval": "",
+          "legendFormat": "{{mode}},{{probe_role}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "UE2 Latency (Median 1s)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "monarch-thanos"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 266
+      },
+      "id": 141,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "gtp_teid_latency_median_1s_ns{imsi=\"001010000001122\"} / 1000000",
+          "interval": "",
+          "legendFormat": "{{mode}},{{probe_role}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "UE3 Latency (Median 1s)",
+      "type": "timeseries"
     }
   ],
   "preload": false,
@@ -5908,7 +6402,7 @@
     "list": []
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -5927,8 +6421,8 @@
     ]
   },
   "timezone": "",
-  "title": "Monarch Dashboard Copy",
-  "uid": "cfkd1g66cp340a",
-  "version": 1,
+  "title": "Monarch Dashboard",
+  "uid": "f1471646-a245-4f23-a3e1-452baa6558c8",
+  "version": 8,
   "weekStart": ""
 }
